@@ -27,22 +27,22 @@ def get_stock_count(pet_shop):
 
 def get_pets_by_breed(pet_shop, breed):
     results = []
-    for pet in pet_shop["pets"]:
-        if pet["breed"] == breed:
-            results.append(pet)
+    for x in pet_shop["pets"]:
+        if x["breed"] == breed:
+            results.append(x)
     return results
 
 
 def find_pet_by_name(pet_shop, pet_name):
-    for pet in pet_shop["pets"]:
-        if pet["name"] == pet_name:
-            return pet
+    for x in pet_shop["pets"]:
+        if x["name"] == pet_name:
+            return x
 
 
 def remove_pet_by_name(pet_shop, pet_name):
-    for pet in pet_shop["pets"]:
-        if pet["name"] == pet_name:
-            pet_shop["pets"].remove(pet)
+    for x in pet_shop["pets"]:
+        if x["name"] == pet_name:
+            pet_shop["pets"].remove(x)
 
 
 def add_pet_to_stock(pet_shop, new_pet):
@@ -63,3 +63,27 @@ def get_customer_pet_count(customer):
 
 def add_pet_to_customer(customer, new_pet):
     customer["pets"].append(new_pet)
+
+
+# Optional
+def customer_can_afford_pet(customer, new_pet):
+    if customer["cash"] >= new_pet["price"]:
+        return True
+    else:
+        return False
+
+
+def sell_pet_to_customer(pet_shop, new_pet, customer):
+    if new_pet is not None:
+        # if customer can afford pet
+        if customer_can_afford_pet(customer, new_pet):
+            # Remove pet from pet shop, add pet to customer
+            pet_shop["pets"].remove(new_pet)
+            add_pet_to_customer(customer, new_pet)
+
+            # Take maney from customer, add to pet shop
+            remove_customer_cash(customer, new_pet["price"])
+            add_or_remove_cash(pet_shop, new_pet["price"])
+
+            # increase pets sold number
+            increase_pets_sold(pet_shop, 1)
