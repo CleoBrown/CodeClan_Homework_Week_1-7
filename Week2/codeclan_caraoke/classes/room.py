@@ -7,8 +7,8 @@ class Room:
         self.songs = []
         self.guest_count = len(self.room_guests)
 
-        def has_capacity(self):
-            return self.capacity > self.guest_count
+    def has_capacity(self):
+        return self.capacity > self.guest_count
 
     def check_in_guest(self, guest):
         if self.has_capacity():
