@@ -7,9 +7,13 @@ class Room:
         self.songs = []
         self.guest_count = len(self.room_guests)
 
+        def has_capacity(self):
+            return self.capacity > self.guest_count
+
     def check_in_guest(self, guest):
-        self.room_guests.append(guest)
-        self.guest_count += 1
+        if self.has_capacity():
+            self.room_guests.append(guest)
+            self.guest_count += 1
 
     def check_out_guest(self, guest):
         self.room_guests.remove(guest)
@@ -17,11 +21,6 @@ class Room:
 
     def add_song_to_room(self, song):
         self.songs.append(song)
-
-    def check_room_capacity(
-        self,
-    ):
-        pass
 
     def guest_can_afford_fee(self, guest):
         return self.entry_fee <= guest.wallet
