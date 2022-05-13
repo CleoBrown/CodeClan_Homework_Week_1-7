@@ -8,6 +8,7 @@ class TestRoom(unittest.TestCase):
     def setUp(self):
         self.room1 = Room(6, 10, 5)
         self.guest = Guest("Flurry", "Baby One More Time", 200)
+        self.guest1 = Guest("Shari", "Sweet Child of Mine", 4)
         self.song = Song("Oops I did it again", "Britney Spears")
 
     # Check in guest to room
@@ -31,6 +32,10 @@ class TestRoom(unittest.TestCase):
     # Check room capacity
 
     # Check guests can afford entry fee
-    def guest_can_afford_fee(self):
-        amount = self.room1.guest_can_afford_fee(self.entry_fee, self.wallet)
-        self.assertEqual(True, amount)
+    def test_guest_can_afford_fee__sufficient(self):
+        can_afford = self.room1.guest_can_afford_fee(self.guest)
+        self.assertEqual(True, can_afford)
+
+    def test_guest_can_afford_fee__insufficient(self):
+        can_afford = self.room1.guest_can_afford_fee(self.guest1)
+        self.assertEqual(False, can_afford)

@@ -23,6 +23,5 @@ class Room:
     ):
         pass
 
-    def guest_can_afford_fee(self, fee, wallet):
-        if fee.entry_fee <= wallet.wallet:
-            return True
+    def guest_can_afford_fee(self, guest):
+        return self.entry_fee <= guest.wallet

@@ -1,3 +1,6 @@
+from classes.room import Room
+
+
 class Guest:
     def __init__(self, name, favourite_song, wallet):
         self.name = name
@@ -6,5 +9,6 @@ class Guest:
 
     # Remove entry fee from guest wallet
 
-    def decrease_guest_wallet(self, fee):
-        self.wallet -= fee.entry_fee
+    def decrease_wallet(self, room):
+        if room.guest_can_afford_fee(self):
+            self.wallet -= room.entry_fee
