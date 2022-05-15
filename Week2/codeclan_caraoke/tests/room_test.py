@@ -7,6 +7,7 @@ from classes.song import Song
 class TestRoom(unittest.TestCase):
     def setUp(self):
         self.room1 = Room(6, 10, 5)
+        self.room2 = Room(6, 10, 2)
         self.guest = Guest("Flurry", "Baby One More Time", 200)
         self.guest1 = Guest("Shari", "Sweet Child of Mine", 4)
         self.song = Song("Oops I did it again", "Britney Spears")
@@ -30,6 +31,14 @@ class TestRoom(unittest.TestCase):
     # Extention
 
     # Check room capacity
+    def test_has_capacity__True(self):
+        self.room2.check_in_guest(self.guest)
+        self.assertEqual(True, self.room2.has_capacity())
+
+    def test_has_capacity__False(self):
+        self.room2.check_in_guest(self.guest)
+        self.room2.check_in_guest(self.guest1)
+        self.assertEqual(False, self.room2.has_capacity())
 
     # Check guests can afford entry fee
     def test_guest_can_afford_fee__sufficient(self):
