@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <head>
+        <title>{{ title }} - Gamestop</title>
+    </head>
+
+<body>
+    <h1>Gamestop!</h1>
+    <h2>{{ animal_crossing }}</h2>
+    {% for game in batman %}
+    <div>
+        <p>
+            {{ game.name }} {{ game.title }} {{ game.date }} <a
+                href="{{ url_for('get_order', index=game.order_ref) }}">details</a>
+
+        </p>
+    </div>
+    {% endfor %}
+</body>
+
+</html>
