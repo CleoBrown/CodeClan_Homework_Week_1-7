@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% for task in all_tasks %}
+<div class="author">
+    <div class="content">
+        {{task.user.first_name}}
+        <div class="description">
+            {{task.description}}
+            <span class="duration">{{task.duration}} mins</span>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

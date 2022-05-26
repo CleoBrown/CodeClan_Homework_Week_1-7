@@ -40,4 +40,4 @@ visit_repository.save(visit4)
 
 user_locations = user_repository.locations(user2)
 
-pdb.set_trace()
+pdb.set_trace() 
