@@ -6,7 +6,9 @@ function App() {
 
 
   return (
-    <GhibliContainer />
+    <div className='main-container'>
+      <GhibliContainer />
+    </div>
 
   );
 }

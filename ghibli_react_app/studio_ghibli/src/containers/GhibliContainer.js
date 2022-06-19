@@ -23,11 +23,12 @@ const GhibliContainer = () => {
 
     return (
         <>
-            <h1 className='App-header'>The Films of Studio Ghibli</h1>
-            <div>
+
+            <h1 className='App-header'>THE FILMS OF STUDIO GHIBLI</h1>
+
+            <div className='Container'>
                 <FilmSelect allFilms={film} onFilmSelect={handleFilmSelect} />
                 {selectedFilm ? <FilmDetail film={selectedFilm} /> : null}
-
             </div>
         </>
     );
